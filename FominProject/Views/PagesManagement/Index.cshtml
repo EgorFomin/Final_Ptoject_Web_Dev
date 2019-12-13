@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FominProject.Models.Page>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pages</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form method="post" action="/PagesManagement/Index">
+    <div class="row">
+        <label class="col-2">Enter a page title: </label>
+        <input class="col-2 ml-1" type="text" name="PageTitle" />
+        <input class="col-2 ml-1" type="submit" value="Search" />
+    </div>
+</form>
+
+<table class="table" style="margin-top:10px;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PageTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PageBody)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPublished)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PageStyle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PageTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PageBody)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsPublished)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PageStyle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.FirstName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

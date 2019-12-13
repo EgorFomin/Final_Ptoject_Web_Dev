@@ -1,0 +1,19 @@
+﻿@model IEnumerable<FominProject.Models.Page>
+
+@{
+    ViewData["Title"] = "Pages List";
+}
+
+<h1>Pages List</h1>
+
+<div class="dropdown m-3">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Pages
+    </button>
+    <div class="dropdown-menu">
+        @foreach (var item in Model)
+        {
+            <a class="dropdown-item" asp-action="Page" asp-route-id="@item.Id">@item.PageTitle</a>
+        }
+    </div>
+</div>

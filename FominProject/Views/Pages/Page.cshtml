@@ -1,0 +1,12 @@
+﻿@model FominProject.Models.Page
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<h1>@Model.PageTitle</h1>
+<h3>Author: @Model.Author.GetFullName() </h3>
+<p>Creation Date: @Model.CreatedDate</p>
+
+@Html.Raw(@Model.GetPageBodyWithStyle())
+
